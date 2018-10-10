@@ -24,10 +24,14 @@ Route::get('/welcome', function () {
 
 Route::get('/home','HomeController@index');
 
-Route::get('/karyawan','Karyawan_c@index');
+Route::get('/karyawan','KaryawanController@index');
 
-Route::get('/jabatan','Jabatan_c@index');
+Route::get('/jabatan','JabatanController@index');
 
-Route::get('departemen','Departemen_c@index');
+Route::get('departemen','DepartemenController@index');
+
+Route::get('/arsip','ArsipController@index');
+
+Route::get('/inventory','InventoryController@index');
 
 
