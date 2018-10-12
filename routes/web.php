@@ -28,11 +28,17 @@ Route::get('/karyawan','KaryawanController@index');
 Route::get('/karyawan/add','KaryawanController@create');
 Route::get('/karyawan/edit/{id}','KaryawanController@edit');
 Route::get('/karyawan/show/{id}','KaryawanController@show');
+Route::put('/karyawan/update','KaryawanController@update');
+Route::get('/karyawan/delete/{id}','KaryawanController@delete');
+
+
 
 Route::get('/jabatan','JabatanController@index');
 Route::get('/jabatan/add','JabatanController@create');
 Route::get('/jabatan/edit/{id}','JabatanController@edit');
 Route::get('/jabatan/show/{id}','JabatanController@show');
+Route::put('/jabatan/update', 'JabatanController@update');
+Route::post('/jabatan/store', 'JabatanController@store');
 
 Route::get('departemen','DepartemenController@index');
 Route::get('departemen/add','DepartemenController@create');

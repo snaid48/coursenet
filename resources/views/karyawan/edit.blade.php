@@ -30,8 +30,16 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal">
+        <form class="form-horizontal" role="form" action="/karyawan/update/ " method="POST">
+          
           <div class="box-body">
+            <div class="box-body">
+              <div class="form-group">
+                <input type="hidden" name="_token" value="{{ csrf_token()}} ">
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="id" value="{{$data->id}} ">
+              </div>
+            </div>
 
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label">Nama</label>

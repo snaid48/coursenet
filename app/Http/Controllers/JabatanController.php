@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Jabatan;
 
 class JabatanController extends Controller
 {
@@ -36,7 +37,10 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Jabatan::create([
+        'nama_jabatan' => $request->nama_jabatan
+        ]);
+        return redirect('/jabatan');
     }
 
     /**
@@ -70,9 +74,13 @@ class JabatanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        Jabatan::where('id', $request->id)
+        ->update([
+            'nama_jabatan' => $request->nama_jabatan
+        ]);
+        return redirect('/jabatan');
     }
 
     /**
