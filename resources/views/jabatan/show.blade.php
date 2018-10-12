@@ -1,0 +1,62 @@
+@extends('layouts.master')
+
+@section('title')
+<title>CourseNet | Jabatan</title>    
+@endsection
+
+@section('content-header')
+<section class="content-header">
+  <h1>
+    Dashboard
+    <small>Jabatan</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i>Jabatan</a></li>
+    <li class="active">Detail</li>
+  </ol>
+</section>
+@endsection
+
+@section('content')
+
+
+  <!-- Main content -->
+  <section class="content">
+    
+    <!-- Profile Image -->
+    <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+
+              <h3 class="profile-username text-center">{{$data->nama_jabatan}}</h3>
+
+              <p class="text-muted text-center">Software Engineer</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                    <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
+
+                    <p class="text-muted"></p>
+                </li>
+                <li class="list-group-item">
+                        <strong><i class="fa fa-phone margin-r-5"></i> Nomor Telepon</strong>
+
+                        <p class="text-muted"></p>
+                </li>
+                <li class="list-group-item">
+                        <strong><i class="fa fa-briefcase margin-r-5"></i> Jabatan</strong>
+
+                        <p class="text-muted"></p>
+                </li>
+              </ul>
+              <a href="{{ url('jabatan')}}" class="btn btn-default">Back</a>
+
+              
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
+  </section>
+  <!-- /.content -->
+@endsection

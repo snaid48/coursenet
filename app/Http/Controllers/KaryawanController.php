@@ -25,7 +25,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        //
+        return view('karyawan.add');
     }
 
     /**
@@ -47,7 +47,8 @@ class KaryawanController extends Controller
      */
     public function show($id)
     {
-        //
+        $karyawan = DB::table('karyawan')->where('id',$id)->first();
+        return view('karyawan.show',['data'=>$karyawan]);
     }
 
     /**
@@ -58,7 +59,8 @@ class KaryawanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $karyawan = DB::table('karyawan')->where('id',$id)->first();
+        return view('karyawan.edit',['data'=>$karyawan]);
     }
 
     /**

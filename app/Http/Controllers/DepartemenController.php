@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class DepartemenController extends Controller
 {
@@ -13,7 +14,8 @@ class DepartemenController extends Controller
      */
     public function index()
     {
-        return view('departemen.home');
+        $departemen = DB::table('departemen')->get();
+        return view('departemen.home',['data'=>$departemen]);
     }
 
     /**
@@ -23,7 +25,7 @@ class DepartemenController extends Controller
      */
     public function create()
     {
-        //
+        return view('departemen.add');
     }
 
     /**
@@ -45,7 +47,8 @@ class DepartemenController extends Controller
      */
     public function show($id)
     {
-        //
+        $departemen = DB::table('departemen')->where('id',$id)->first();
+        return view('departemen.show',['data'=>$departemen]);
     }
 
     /**
@@ -56,7 +59,8 @@ class DepartemenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departemen = DB::table('departemen')->where('id',$id)->first();
+        return view('departemen.edit',['data'=>$departemen]);
     }
 
     /**

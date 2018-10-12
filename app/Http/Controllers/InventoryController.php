@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class InventoryController extends Controller
 {
@@ -13,7 +14,8 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        return view('inventory.home');
+        $inventory = DB::table('inventory')->get();
+        return view('inventory.home',['data'=>$inventory]);
     }
 
     /**
@@ -23,7 +25,7 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('inventory.add');
     }
 
     /**
@@ -45,7 +47,8 @@ class InventoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $inventory = DB::table('inventory')->where('id',$id)->first();
+        return view('inventory.show',['data'=>$inventory]);
     }
 
     /**
@@ -56,7 +59,8 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $inventory = DB::table('inventory')->where('id',$id)->first();
+        return view('inventory.edit',['data'=>$inventory]);
     }
 
     /**

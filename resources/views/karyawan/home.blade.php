@@ -26,7 +26,8 @@
 
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title">Tabel Karyawan</h3>
+        <h3 class="box-title">Tabel Karyawan</h3> 
+        <a href="/karyawan/add"> <button class="btn-primary">Add Data</button> </a>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -43,11 +44,11 @@
           <tbody>
             @foreach ($data as $row)
             <tr>
-                <td>{{$row->nama_karyawan}}</td>
+                <td><a href="/karyawan/show/{{$row->id}}">  {{$row->nama_karyawan}} </a></td>
                 <td>{{$row->alamat}}</td>
                 <td>{{$row->telepon}}</td>
                 <td>{{$row->jabatan}}</td>
-                <td> 
+                <td align="center"> 
                   <a href="/karyawan/edit/{{$row->id}}"> <button class="btn-primary">Edit</button> </a>
                   <a href="/karyawan/delete/{{$row->id}}"> <button class="btn-danger">Delete</button> </a>
                 </td>

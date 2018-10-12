@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class JabatanController extends Controller
 {
@@ -13,7 +14,8 @@ class JabatanController extends Controller
      */
     public function index()
     {
-        return view('jabatan.home');
+        $jabatan = DB::table('jabatan')->get();
+        return view('jabatan.home',['data'=>$jabatan]);
     }
 
     /**
@@ -23,7 +25,7 @@ class JabatanController extends Controller
      */
     public function create()
     {
-        //
+        return view('jabatan.add');
     }
 
     /**
@@ -45,7 +47,8 @@ class JabatanController extends Controller
      */
     public function show($id)
     {
-        //
+        $jabatan = DB::table('jabatan')->where('id',$id)->first();
+        return view('jabatan.show',['data'=>$jabatan]);
     }
 
     /**
@@ -56,7 +59,8 @@ class JabatanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jabatan = DB::table('jabatan')->where('id',$id)->first();
+        return view('jabatan.edit',['data'=>$jabatan]);
     }
 
     /**
