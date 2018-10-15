@@ -30,8 +30,11 @@
       </div>
       <!-- /.box-header -->
       <!-- form start -->
-      <form class="form-horizontal">
+      <form role="form" action="/arsip/store" method="POST">
         <div class="box-body">
+            <div class="form-group">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            </div>
 
           <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Nama Arsip</label>

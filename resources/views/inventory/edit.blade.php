@@ -30,8 +30,13 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal">
+        <form role="form" action="/inventory/update" method="POST">
           <div class="box-body">
+            <div class="form-group">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+              <input type="hidden" class="form-control" name="id" value="{{ $data->id}}" />
+              <input type="hidden" name="_method" value="PUT" />
+            </div>
 
             <div class="form-group">
               <label for="inputEmail3" class="col-sm-2 control-label">Nama Inventory</label>
@@ -42,9 +47,6 @@
             </div>
 
 
-           
-
-            
 
           </div>
           <!-- /.box-body -->

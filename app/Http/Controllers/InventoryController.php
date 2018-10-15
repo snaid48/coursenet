@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Inventory;
 
 class InventoryController extends Controller
 {
@@ -14,7 +15,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $inventory = DB::table('inventory')->get();
+        $inventory = Inventory::get();
         return view('inventory.home',['data'=>$inventory]);
     }
 
@@ -36,7 +37,10 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Inventory::create([
+            'nama_inventory' => $request->nama_inventory
+            ]);
+            return redirect('/inventory');
     }
 
     /**
@@ -47,7 +51,7 @@ class InventoryController extends Controller
      */
     public function show($id)
     {
-        $inventory = DB::table('inventory')->where('id',$id)->first();
+        $inventory = Inventory::where('id',$id)->first();
         return view('inventory.show',['data'=>$inventory]);
     }
 
@@ -59,7 +63,7 @@ class InventoryController extends Controller
      */
     public function edit($id)
     {
-        $inventory = DB::table('inventory')->where('id',$id)->first();
+        $inventory = Inventory::where('id',$id)->first();
         return view('inventory.edit',['data'=>$inventory]);
     }
 
@@ -70,9 +74,13 @@ class InventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        Inventory::where('id', $request->id)
+        ->update([
+            'nama_inventory' => $request->nama_inventory
+        ]);
+        return redirect('/inventory');
     }
 
     /**

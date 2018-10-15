@@ -30,11 +30,11 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form role="form" action="/jabatan/update" method="POST">
+        <form role="form" action="/departemen/update" method="POST">
           <div class="box-body">
               <div class="form-group">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                  <input type="hidden" class="form-control" name="no" value="{{ $data->id}}" />
+                  <input type="hidden" class="form-control" name="id" value="{{ $data->id}}" />
                   <input type="hidden" name="_method" value="PUT"/>
               </div>
 

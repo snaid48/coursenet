@@ -1,9 +1,8 @@
-@extends('layouts.master')
-
+@extends('layouts.master') 
 @section('title')
-<title>CourseNet | Arsip</title>    
+<title>CourseNet | Arsip</title>
 @endsection
-
+ 
 @section('content-header')
 <section class="content-header">
   <h1>
@@ -16,47 +15,48 @@
   </ol>
 </section>
 @endsection
-
+ 
 @section('content')
 
 
-  <!-- Main content -->
-  <section class="content">
-    
-    <!-- Horizontal Form -->
-    <div class="box box-info">
-        <div class="box-header with-border">
-          <h3 class="box-title">Form Edit Arsip</h3>
+<!-- Main content -->
+<section class="content">
+
+  <!-- Horizontal Form -->
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Form Edit Arsip</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form role="form" action="/arsip/update" method="POST">
+      <div class="box-body">
+        <div class="form-group">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+          <input type="hidden" class="form-control" name="id" value="{{ $data->id}}" />
+          <input type="hidden" name="_method" value="PUT" />
         </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form class="form-horizontal">
-          <div class="box-body">
 
-            <div class="form-group">
-              <label for="inputEmail3" class="col-sm-2 control-label">Nama Arsip</label>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-2 control-label">Nama Arsip</label>
 
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="Nama" name="nama_arsip" value="{{$data->nama_arsip}} ">
-              </div>
-            </div>
-
-
-           
-
-            
-
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputEmail3" placeholder="Nama" name="nama_arsip" value="{{$data->nama_arsip}} ">
           </div>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            <a href="{{ url('arsip')}}" class="btn btn-default">Cancel</a>
-            <button type="submit" class="btn btn-info pull-right">Submit</button>
-          </div>
-          <!-- /.box-footer -->
-        </form>
+        </div>
+
+
       </div>
-      <!-- /.box -->
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <a href="{{ url('arsip')}}" class="btn btn-default">Cancel</a>
+        <button type="submit" class="btn btn-info pull-right">Submit</button>
+      </div>
+      <!-- /.box-footer -->
+    </form>
+  </div>
+  <!-- /.box -->
 
-  </section>
-  <!-- /.content -->
+</section>
+<!-- /.content -->
 @endsection

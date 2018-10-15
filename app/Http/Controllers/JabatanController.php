@@ -15,7 +15,10 @@ class JabatanController extends Controller
      */
     public function index()
     {
-        $jabatan = DB::table('jabatan')->get();
+        $jabatan = Jabatan::get();
+        // $jabatan = Jabatan::withTrashed()->all();
+
+        // $jabatan = Jabatan::withTrashed()->get();
         return view('jabatan.home',['data'=>$jabatan]);
     }
 
@@ -51,7 +54,7 @@ class JabatanController extends Controller
      */
     public function show($id)
     {
-        $jabatan = DB::table('jabatan')->where('id',$id)->first();
+        $jabatan = Jabatan::where('id',$id)->first();
         return view('jabatan.show',['data'=>$jabatan]);
     }
 
@@ -63,7 +66,7 @@ class JabatanController extends Controller
      */
     public function edit($id)
     {
-        $jabatan = DB::table('jabatan')->where('id',$id)->first();
+        $jabatan = Jabatan::where('id',$id)->first();
         return view('jabatan.edit',['data'=>$jabatan]);
     }
 
@@ -91,6 +94,17 @@ class JabatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $jabatan = Jabatan::findOrFail($id);
+        $jabatan = Jabatan::where('id','=',$id);
+        // praktik softdelete
+        // penggunaan delete () dan destroy () sama saja
+        $jabatan->delete();
+        // Jabatan::destroy($id);
+
+        // menghapus permanen dari database
+        // $jabatan->forceDelete();
+        
+        
+        return redirect('/jabatan');
     }
 }

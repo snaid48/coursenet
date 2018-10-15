@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Departemen;
 
 class DepartemenController extends Controller
 {
@@ -36,7 +37,11 @@ class DepartemenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //eloquent biasa
+        $departemen = new Departemen;
+        $departemen->nama_departemen = $request->nama_departemen;
+        $departemen->save();
+        return redirect('/departemen');
     }
 
     /**
@@ -70,9 +75,13 @@ class DepartemenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // Update biasa
+        $departemen = Departemen::where('id', $request->id)->first();
+        $departemen->nama_departemen = $request->nama_departemen;
+        $departemen->save();
+        return redirect('/departemen');
     }
 
     /**

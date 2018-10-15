@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Arsip;
 
 class ArsipController extends Controller
 {
@@ -14,7 +15,7 @@ class ArsipController extends Controller
      */
     public function index()
     {
-        $arsip = DB::table('arsip')->get();
+        $arsip = Arsip::get();
         return view('arsip.home',['data'=>$arsip]);
     }
 
@@ -36,7 +37,10 @@ class ArsipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Arsip::create([
+            'nama_arsip' => $request->nama_arsip
+            ]);
+            return redirect('/arsip');
     }
 
     /**
@@ -47,7 +51,7 @@ class ArsipController extends Controller
      */
     public function show($id)
     {
-        $arsip = DB::table('arsip')->where('id',$id)->first();
+        $arsip = Arsip::where('id',$id)->first();
         return view('arsip.show',['data'=>$arsip]);
     }
 
@@ -59,7 +63,7 @@ class ArsipController extends Controller
      */
     public function edit($id)
     {
-        $arsip = DB::table('arsip')->where('id',$id)->first();
+        $arsip = Arsip::where('id',$id)->first();
         return view('arsip.edit',['data'=>$arsip]);
     }
 
@@ -70,9 +74,13 @@ class ArsipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        Arsip::where('id', $request->id)
+        ->update([
+            'nama_arsip' => $request->nama_arsip
+        ]);
+        return redirect('/arsip');
     }
 
     /**

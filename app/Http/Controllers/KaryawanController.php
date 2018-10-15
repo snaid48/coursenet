@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Karyawan;
+// use Illuminate\Support\Facades\URL;
 
 class KaryawanController extends Controller
 {
@@ -37,7 +38,15 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Insert use query builder
+        DB::table('karyawan')->insert(
+            ['nama_karyawan' => $request->nama_karyawan,
+             'alamat' => $request->alamat,
+             'telepon' => $request->telepon,
+             'jabatan' => $request->jabatan]
+        );
+
+        return redirect('/karyawan');
     }
 
     /**
@@ -71,9 +80,18 @@ class KaryawanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // use Query Builder
+        DB::table('karyawan')
+            ->where('id', $request->id)
+            ->update(['nama_karyawan' => $request->nama_karyawan,
+            'alamat' => $request->alamat,
+            'telepon' => $request->telepon,
+            'jabatan' => $request->jabatan]);
+
+
+        return redirect('/karyawan');
     }
 
     /**

@@ -30,7 +30,13 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form class="form-horizontal" role="form" action="/karyawan/update/ " method="POST">
+        <form role="form" class="form-horizontal" action="/karyawan/update" method="POST">
+          <div class="box-body">
+            <div class="form-group">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+              <input type="hidden" class="form-control" name="id" value="{{ $data->id}}" />
+              <input type="hidden" name="_method" value="PUT" />
+            </div>
           
           <div class="box-body">
             <div class="box-body">
