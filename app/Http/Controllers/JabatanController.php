@@ -40,6 +40,11 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'nama_jabatan' => 'required|min:5|max:20',
+        ]);
+
+
         Jabatan::create([
         'nama_jabatan' => $request->nama_jabatan
         ]);
